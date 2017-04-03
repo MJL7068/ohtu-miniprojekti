@@ -5,8 +5,10 @@
  */
 package repositories;
 
+import miniproju.models.Reference;
 import org.springframework.stereotype.Repository;
-import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.jpa.repository.JpaRepository;
+
 
 
 /**
@@ -14,6 +16,6 @@ import org.springframework.data.jpa.repository.Query;
  * @author ilkka
  */
 @Repository
-public interface RefefenceRepository extends JpaRepository<Post, Long> {
+public interface RefefenceRepository extends JpaRepository<Reference, Long> {
     
 }
