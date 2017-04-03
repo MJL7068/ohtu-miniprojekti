@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package repositories;
+package miniproju.repositories;
 
 import miniproju.models.User;
 import org.springframework.stereotype.Repository;
