@@ -39,18 +39,18 @@ public class ReferenceServiceStubImpl implements ReferenceService {
     public Reference create(Reference ref) {
         ref.setId(new Long(refs.size()));
         refs.add(ref);
-        
+
         return ref;
     }
 
     @Override
-    public Reference findWithId(int id) {
+    public Reference findWithId(Long id) {
         for (Reference ref : refs) {
             if (ref.getId() == id) {
                 return ref;
             }
         }
-        
+
         return null;
     }
 

@@ -6,15 +6,14 @@
 package miniproju.services;
 
 import java.util.List;
-import miniproju.models.Reference;
+import miniproju.models.User;
 
 /**
  *
  * @author ilkka
  */
-public interface ReferenceService {
-    List<Reference> findAll();
-    Reference findWithId(Long id);
-    Reference create(Reference ref);
-    
+public interface UserService {
+    List<User> findAll();
+    User findWithId(Long id);
+    User create(User user);
 }

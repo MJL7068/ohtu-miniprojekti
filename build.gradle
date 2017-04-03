@@ -40,18 +40,18 @@ mainClassName = 'miniproju.Main'
 
 dependencies {
     compile('org.springframework.boot:spring-boot-starter-web') {
-//        exclude module: 'spring-boot-starter-tomcat'
+        exclude module: 'spring-boot-starter-tomcat'
     }
-//    compile 'org.springframework.boot:spring-boot-starter-jetty'
-//    compile 'org.springframework.boot:spring-boot-starter-actuator'
+    compile 'org.springframework.boot:spring-boot-starter-jetty'
+    compile 'org.springframework.boot:spring-boot-starter-actuator'
     compile("org.springframework.boot:spring-boot-starter-thymeleaf")
     
-//    compile("org.springframework.boot:spring-boot-devtools")
+    compile("org.springframework.boot:spring-boot-devtools")
     
     compile("org.springframework.boot:spring-boot-starter-data-jpa")
-//    compile("org.springframework.boot:spring-boot-starter-jdbc")
+    compile("org.springframework.boot:spring-boot-starter-jdbc")
     compile("com.h2database:h2")
-//    compile 'org.springframework:spring-jdbc'
+    compile 'org.springframework:spring-jdbc'
     compile group: 'org.junit.jupiter', name: 'junit-jupiter-api', version: '5.0.0-M3'
     compile group: 'org.junit.jupiter', name: 'junit-jupiter-engine', version: '5.0.0-M3'
     compile group: 'org.junit.platform', name: 'junit-platform-runner', version: '1.0.0-M3'

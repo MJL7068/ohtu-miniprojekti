@@ -16,6 +16,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
  * @author ilkka
  */
 @Repository
-public interface RefefenceRepository extends JpaRepository<Reference, Long> {
+public interface ReferenceRepository extends JpaRepository<Reference, Long> {
     
 }
