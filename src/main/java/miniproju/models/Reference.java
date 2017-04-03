@@ -14,7 +14,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-
 /**
  *
  * @author ilkka
@@ -26,19 +25,15 @@ public class Reference {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    
+
     @Column(nullable = false, length = 300)
     private String name;
-
-    public Reference() {
-    }
-
-    ;
+        
     
-    public Reference(Long id, String name) {
-        this.id = id;
-        this.name = name;
-    }
+//    public Reference(Long id, String name) {
+//        this.id = id;
+//        this.name = name;
+//    }
 
     public Long getId() {
         return id;

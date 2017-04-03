@@ -19,14 +19,14 @@ public class ReferenceServiceStubImpl implements ReferenceService {
 
     private List<Reference> refs = new ArrayList<>();
 
-    {
-        {
-            refs.add(new Reference(1L, "eka"));
-            refs.add(new Reference(2L, "toka"));
-        }
-    }
-
-    ;
+//    {
+//        {
+//            refs.add(new Reference(1L, "eka"));
+//            refs.add(new Reference(2L, "toka"));
+//        }
+//    }
+//
+//    ;
     
 
     

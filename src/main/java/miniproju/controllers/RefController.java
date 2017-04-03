@@ -12,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import miniproju.services.ReferenceService;
+import static org.springframework.web.bind.annotation.RequestMethod.GET;
 
 /**
  *
@@ -19,11 +20,10 @@ import miniproju.services.ReferenceService;
  */
 @Controller
 public class RefController {
-    
+
     @Autowired
     private ReferenceService refService;
-    
-        
+
     /*  RequestMapping
         - map all HTTP verbs to /greeting to this method
         - narrow down ala @RequestMapping(method=GET)                 
@@ -33,12 +33,18 @@ public class RefController {
     
         PathVariable
         - bind pathvariable to method parameter 'id'
-    */
-    @RequestMapping("refs/view/{id}")
+     */
+    @RequestMapping("references/view/{id}")
     public String view(@PathVariable("id") Long id, Model model) {
         Reference ref = refService.findWithId(id);
         model.addAttribute("ref", ref);
-        
+
         return "references/view";
     }
+
+    @RequestMapping(value = "/references/add", method = GET)
+    public String addRef() {
+        return "references/addRef";
+    }
+
 }
