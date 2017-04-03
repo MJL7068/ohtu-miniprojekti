@@ -6,15 +6,15 @@
 package miniproju.services;
 
 import java.util.List;
-import miniproju.models.Ref;
+import miniproju.models.Reference;
 
 /**
  *
  * @author ilkka
  */
-public interface RefService {
-    List<Ref> findAll();
-    Ref findWithId(int id);
-    Ref create(Ref ref);
+public interface ReferenceService {
+    List<Reference> findAll();
+    Reference findWithId(int id);
+    Reference create(Reference ref);
     
 }

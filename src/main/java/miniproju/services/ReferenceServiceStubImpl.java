@@ -7,7 +7,7 @@ package miniproju.services;
 
 import java.util.ArrayList;
 import java.util.List;
-import miniproju.models.Ref;
+import miniproju.models.Reference;
 import org.springframework.stereotype.Service;
 
 /**
@@ -15,14 +15,14 @@ import org.springframework.stereotype.Service;
  * @author ilkka
  */
 @Service
-public class RefServiceStubImpl implements RefService {
+public class ReferenceServiceStubImpl implements ReferenceService {
 
-    private List<Ref> refs = new ArrayList<>();
+    private List<Reference> refs = new ArrayList<>();
 
     {
         {
-            refs.add(new Ref(1, "eka"));
-            refs.add(new Ref(2, "toka"));
+            refs.add(new Reference(1L, "eka"));
+            refs.add(new Reference(2L, "toka"));
         }
     }
 
@@ -31,21 +31,21 @@ public class RefServiceStubImpl implements RefService {
 
     
     @Override
-    public List<Ref> findAll() {
+    public List<Reference> findAll() {
         return refs;
     }
 
     @Override
-    public Ref create(Ref ref) {
-        ref.setId(refs.size());
+    public Reference create(Reference ref) {
+        ref.setId(new Long(refs.size()));
         refs.add(ref);
         
         return ref;
     }
 
     @Override
-    public Ref findWithId(int id) {
-        for (Ref ref : refs) {
+    public Reference findWithId(int id) {
+        for (Reference ref : refs) {
             if (ref.getId() == id) {
                 return ref;
             }

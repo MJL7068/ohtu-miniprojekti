@@ -5,26 +5,38 @@
  */
 package miniproju.models;
 
+import javax.persistence.*;
+
 /**
  *
  * @author ilkka
  */
+@Entity
+@Table(name="users")
 public class User {
-    private int id;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    
+    @Column(nullable = false, length = 30, unique = true)
     private String username;
+
+    public User() {
+    }
+
+    ;
     
-    public User() { };
-    
-    public User(int id, String username) {
+    public User(Long id, String username) {
         this.id = id;
         this.username = username;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

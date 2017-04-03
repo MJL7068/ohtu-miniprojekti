@@ -5,26 +5,38 @@
  */
 package miniproju.models;
 
+import javax.persistence.*;
+
 /**
  *
  * @author ilkka
  */
-public class Ref {
-    private int id;
+@Entity
+@Table(name = "references")
+public class Reference {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    
+    @Column(nullable = false, length = 300)
     private String name;
+
+    public Reference() {
+    }
+
+    ;
     
-    public Ref() { };
-    
-    public Ref(int id, String name) {
+    public Reference(Long id, String name) {
         this.id = id;
         this.name = name;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -35,5 +47,5 @@ public class Ref {
     public void setName(String name) {
         this.name = name;
     }
-    
+
 }
