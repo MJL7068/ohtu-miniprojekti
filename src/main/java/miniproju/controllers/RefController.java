@@ -5,6 +5,7 @@
  */
 package miniproju.controllers;
 
+import java.util.Map;
 import miniproju.models.Reference;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -13,6 +14,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import miniproju.services.ReferenceService;
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
+import static org.springframework.web.bind.annotation.RequestMethod.POST;
+import org.springframework.web.bind.annotation.RequestParam;
 
 /**
  *
@@ -22,7 +25,7 @@ import static org.springframework.web.bind.annotation.RequestMethod.GET;
 public class RefController {
 
     @Autowired
-    private ReferenceService refService;
+    private ReferenceService referenceService;
 
     /*  RequestMapping
         - map all HTTP verbs to /greeting to this method
@@ -36,15 +39,26 @@ public class RefController {
      */
     @RequestMapping("references/view/{id}")
     public String view(@PathVariable("id") Long id, Model model) {
-        Reference ref = refService.findWithId(id);
+        Reference ref = referenceService.findWithId(id);
         model.addAttribute("ref", ref);
 
         return "references/view";
     }
 
-    @RequestMapping(value = "/references/add", method = GET)
-    public String addRef() {
-        return "references/addRef";
+    @RequestMapping(value = "/references/book_new", method = GET)
+    public String newBook() {
+
+        return "references/book_new";
+    }
+
+    @RequestMapping(value = "/references/book_new", method = POST)
+    public String saveBookRef(@RequestParam Map<String, String> params) {
+
+        Reference newRef = new Reference();
+        newRef.setTitle(params.get("title"));
+        referenceService.create(newRef);
+
+        return "redirect:/";
     }
 
 }

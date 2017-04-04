@@ -9,7 +9,6 @@ import java.util.List;
 import miniproju.models.User;
 import miniproju.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
 
 /**
@@ -17,7 +16,6 @@ import org.springframework.stereotype.Service;
  * @author ilkka
  */
 @Service
-@Primary
 public class UserServiceJpaImpl implements UserService {
 
     @Autowired

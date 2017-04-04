@@ -9,7 +9,6 @@ import java.util.List;
 import miniproju.models.Reference;
 import miniproju.repositories.ReferenceRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
 
 /**
@@ -17,36 +16,25 @@ import org.springframework.stereotype.Service;
  * @author ilkka
  */
 @Service
-@Primary
 public class ReferenceServiceJpaImpl implements ReferenceService {
 
     @Autowired
-    private ReferenceRepository refRepo;
+    private ReferenceRepository referenceRepository;
 
-    {
-        {
-            Reference ref1 = new Reference();
-            ref1.setName("eka");
-//            this.create(ref1);
-//            this.refRepo.save(ref1);
-        }
-    }
-
-    ;
 
     @Override
     public List<Reference> findAll() {
-        return this.refRepo.findAll();
+        return this.referenceRepository.findAll();
     }
 
     @Override
     public Reference findWithId(Long id) {
-        return this.refRepo.findOne(id);
+        return this.referenceRepository.findOne(id);
     }
 
     @Override
     public Reference create(Reference ref) {
-        return this.refRepo.save(ref);
+        return this.referenceRepository.save(ref);
     }
 
 }

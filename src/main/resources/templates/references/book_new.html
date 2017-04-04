@@ -5,11 +5,11 @@
     </head>
 
     <body>
-        <form>
+        <form th:action="@{/references/book_new}" method="POST">
             
             <div class="form-group">
                 <label>Nimi</label>
-                <input type="text" class="form-control" id="name"></input>
+                <input type="text" class="form-control" id="title"></input>
             </div>
             
             <button type="submit">Lisää</button>                 
