@@ -8,7 +8,6 @@ package miniproju.models;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
-
 import javax.persistence.Id;
 import org.springframework.data.jpa.domain.AbstractPersistable;
 
@@ -26,19 +25,19 @@ public class Reference extends AbstractPersistable<Long> {
     
     private String title;
         
+    public Reference() {}
     
-//    public Reference(Long id, String name) {
-//        this.id = id;
-//        this.name = name;
-//    }
+    public Reference(String title) {        
+        this.title = title;
+    }
 
-//    public Long getId() {
-//        return id;
-//    }
-//
-//    public void setId(Long id) {
-//        this.id = id;
-//    }
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getTitle() {
         return title;

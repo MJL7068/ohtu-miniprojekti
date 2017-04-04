@@ -31,10 +31,10 @@ public class IndexContoller {
     }
 
     // fallback
-    @RequestMapping("*")
-    public String redirectHome() {
-        return "redirect:/";
-    }
+//    @RequestMapping("*")
+//    public String redirectHome() {
+//        return "redirect:/";
+//    }
 
     @RequestMapping("/")
     public String index(Model model) {

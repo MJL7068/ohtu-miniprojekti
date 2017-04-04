@@ -13,6 +13,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import miniproju.services.ReferenceService;
+import org.springframework.web.bind.annotation.RequestMethod;
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
 import static org.springframework.web.bind.annotation.RequestMethod.POST;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -51,11 +52,12 @@ public class RefController {
         return "references/book_new";
     }
 
-    @RequestMapping(value = "/references/book_new", method = POST)
+    @RequestMapping(value = "/references/book_new", method = RequestMethod.POST)
     public String saveBookRef(@RequestParam Map<String, String> params) {
 
-        Reference newRef = new Reference();
-        newRef.setTitle(params.get("title"));
+        Reference newRef = new Reference(params.get("title"));
+//        newRef.setTitle(params.get("title"));
+//        newRef.setTitle("test");
         referenceService.create(newRef);
 
         return "redirect:/";
