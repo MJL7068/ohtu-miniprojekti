@@ -12,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import miniproju.services.ReferenceService;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
  *
@@ -22,6 +23,12 @@ public class IndexContoller {
 
     @Autowired
     private ReferenceService refService;
+
+    @RequestMapping("/helloworld")
+    @ResponseBody
+    String helloWorld() {
+        return "Hello World!";
+    }
 
     // fallback
     @RequestMapping("*")
@@ -36,4 +43,5 @@ public class IndexContoller {
 
         return "index";
     }
+
 }

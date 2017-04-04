@@ -8,11 +8,17 @@
 
     <body>
         
-        <main id="allrefs">
-            <article th:each="ref:${allRefs}">
-                <span th:text="${ref.title}">Example name</span>
-            </article>
-        </main>
+        
+        <ul class="allReferences">
+            <li th:each="ref : ${allRefs}">
+                <span th:text="${ref.title}">Example title</span>
+            </li>
+            
+        </ul>
+        
+                
+            
+        
 
     </body>
 

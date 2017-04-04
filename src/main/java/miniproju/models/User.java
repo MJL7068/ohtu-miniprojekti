@@ -5,46 +5,50 @@
  */
 package miniproju.models;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import org.springframework.data.jpa.domain.AbstractPersistable;
+
+
 
 /**
  *
  * @author ilkka
  */
 @Entity
-@Table(name="users")
-public class User {
+public class User extends AbstractPersistable<Long> {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     
-    @Column(nullable = false, length = 30, unique = true)
-    private String username;
+    private String name;
 
-    public User() {
-    }
+//    public User() {
+//    }
+//
+//    ;
+//    
+//    public User(Long id, String name) {
+//        this.id = id;
+//        this.name = name;
+//    }
 
-    ;
-    
-    public User(Long id, String username) {
-        this.id = id;
-        this.username = username;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
+//    public Long getId() {
+//        return id;
+//    }
+//
+//    public void setId(Long id) {
+//        this.id = id;
+//    }
 
     public String getUsername() {
-        return username;
+        return name;
     }
 
     public void setUsername(String username) {
-        this.username = username;
+        this.name = username;
     }
 }

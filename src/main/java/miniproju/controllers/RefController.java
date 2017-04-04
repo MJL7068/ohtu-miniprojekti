@@ -41,7 +41,7 @@ public class RefController {
     public String view(@PathVariable("id") Long id, Model model) {
         Reference ref = referenceService.findWithId(id);
         model.addAttribute("ref", ref);
-
+        
         return "references/view";
     }
 
