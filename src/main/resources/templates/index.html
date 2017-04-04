@@ -7,18 +7,23 @@
     </head>
 
     <body>
-        
-        
+        <h1>Kirjaviitteet</h1>       
+
         <ul class="allReferences">
             <li th:each="ref : ${allRefs}">
-                <span th:text="${ref.title}">Example title</span>
+                <span th:text="${ref.title}"></span>
+                <ul>
+                    <li th:text="${ref.author}"></li>
+                    <li th:text="${ref.publisher}"></li>
+                    <li th:text="${ref.year}"></li>
+                    <li th:text="${ref.address}"></li>
+                    <li th:text="${ref.edition}"></li>
+                </ul>
             </li>
             
         </ul>
         
-                
-            
-        
+        <a href="/references/book_new">Lisää uusi kirjaviite</a> 
 
     </body>
 

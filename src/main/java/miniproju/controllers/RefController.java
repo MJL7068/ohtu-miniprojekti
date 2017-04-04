@@ -54,11 +54,6 @@ public class RefController {
 
     @RequestMapping(value = "/references/book_new", method = RequestMethod.POST)
     public String saveBookRef(@RequestParam Map<String, String> params) {
-
-        // EI VÄLITY JOSTAIN SYYSTÄ, BUGI TÄSSÄ TAI THYMELEAF-TEMPLATESSA
-        //Reference newRef = new Reference(params.get("title"));
-//        newRef.setTitle(params.get("title"));
-//        newRef.setTitle("test");
         Reference newRef = new Reference();
         newRef.setTitle(params.get("title"));
         newRef.setAuthor(params.get("author"));

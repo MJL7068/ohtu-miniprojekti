@@ -21,8 +21,21 @@ public class Main implements CommandLineRunner {
     @Override
     public void run(String... strings) throws Exception {
         /////////
-        Reference newRef = new Reference("eka");
-        Reference newRef2 = new Reference("toka");
+        Reference newRef = new Reference();
+        newRef.setTitle("Extreme Programming Explained: Embrace Change (2nd Edition)");
+        newRef.setAuthor("Beck, Kent and Andres, Cynthiat");
+        newRef.setPublisher("Addison-Wesley Professional");
+        newRef.setYear(2004);
+        newRef.setAddress("Addison");
+        newRef.setEdition("9th");
+
+        Reference newRef2 = new Reference();
+        newRef2.setTitle("Clean Code: A Handbook of Agile Software Craftsmanship");
+        newRef2.setAuthor("Martin, Robert");
+        newRef2.setPublisher("Prentice Hall");
+        newRef2.setYear(2008);
+        newRef2.setAddress("Prentice Hall");
+        newRef2.setEdition("9th");
                 
         rs.create(newRef);
         rs.create(newRef2);
