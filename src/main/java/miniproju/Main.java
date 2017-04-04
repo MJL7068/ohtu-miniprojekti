@@ -1,14 +1,9 @@
 package miniproju;
 
-<<<<<<< HEAD
-import miniproju.Domain.Bookref;
-import miniproju.db.Database;
-=======
 import miniproju.models.Reference;
 import miniproju.services.ReferenceService;
 import miniproju.services.ReferenceServiceJpaImpl;
 import org.springframework.beans.factory.annotation.Autowired;
->>>>>>> branchTwo
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -25,16 +20,7 @@ public class Main implements CommandLineRunner {
 
     @Override
     public void run(String... strings) throws Exception {
-<<<<<<< HEAD
-        Database db = new Database();
-        db.saveBookref("variety", "article", "year", 1980);
 
-        for (Bookref br: db.allBookrefs()) {
-            System.out.println(br);
-        }
-
-=======
-        /////////
         Reference newRef = new Reference();
         newRef.setTitle("Extreme Programming Explained: Embrace Change (2nd Edition)");
         newRef.setAuthor("Beck, Kent and Andres, Cynthiat");
@@ -53,6 +39,5 @@ public class Main implements CommandLineRunner {
                 
         rs.create(newRef);
         rs.create(newRef2);
->>>>>>> branchTwo
     }
 }
