@@ -56,9 +56,16 @@ public class RefController {
     public String saveBookRef(@RequestParam Map<String, String> params) {
 
         // EI VÄLITY JOSTAIN SYYSTÄ, BUGI TÄSSÄ TAI THYMELEAF-TEMPLATESSA
-        Reference newRef = new Reference(params.get("title"));
+        //Reference newRef = new Reference(params.get("title"));
 //        newRef.setTitle(params.get("title"));
 //        newRef.setTitle("test");
+        Reference newRef = new Reference();
+        newRef.setTitle(params.get("title"));
+        newRef.setAuthor(params.get("author"));
+        newRef.setPublisher(params.get("publisher"));
+        newRef.setYear(Integer.parseInt(params.get("year")));
+        newRef.setAddress(params.get("address"));
+        newRef.setEdition(params.get("edition"));
         referenceService.create(newRef);
 
         return "redirect:/";

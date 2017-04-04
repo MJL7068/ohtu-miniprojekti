@@ -24,6 +24,11 @@ public class Reference extends AbstractPersistable<Long> {
     private Long id;
     
     private String title;
+    private String author;
+    private String publisher;
+    private int year;
+    private String address;
+    private String edition;
         
     public Reference() {}
     
@@ -45,6 +50,46 @@ public class Reference extends AbstractPersistable<Long> {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public String getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
+    }
+
+    public String getPublisher() {
+        return publisher;
+    }
+
+    public void setPublisher(String publisher) {
+        this.publisher = publisher;
+    }
+
+    public int getYear() {
+        return year;
+    }
+
+    public void setYear(int year) {
+        this.year = year;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getEdition() {
+        return edition;
+    }
+
+    public void setEdition(String edition) {
+        this.edition = edition;
     }
 
 }
