@@ -1,29 +1,30 @@
 <!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
-<html>
-    <head>
-        <title>Reference Master</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link href="https://fonts.googleapis.com/css?family=Cinzel|Old+Standard+TT" rel="stylesheet"> 
-         <link rel = "stylesheet"  type = "text/css"   href = "main.css" />
-    </head>
-        <body>
-      <header>
-    <h1>Reference Master</h1>
-  </header>
-             <ul>
-                 <li><a href="index.html">Home</a></li>              
-                 <li><a href="bookref.html">New reference</a></li>
-                 <li> <a href="list.html">References</a> </li>
+<html xmlns:th="http://www.thymeleaf.org">
 
-</ul> 
-            <div class='textbody'><p>Reference Master is an application where you can easily manage your references, and generate a Bibtex -files.</p></div>        
+    <head>
+        <meta charset="UTF-8" />
+        <title>Index</title>
+    </head>
+
+    <body>
+        <h1>Kirjaviitteet</h1>       
+
+        <ul class="allReferences">
+            <li th:each="ref : ${allRefs}">
+                <span th:text="${ref.title}"></span>
+                <ul>
+                    <li th:text="${ref.author}"></li>
+                    <li th:text="${ref.publisher}"></li>
+                    <li th:text="${ref.year}"></li>
+                    <li th:text="${ref.address}"></li>
+                    <li th:text="${ref.edition}"></li>
+                </ul>
+            </li>
             
+        </ul>
+        
+        <a href="/references/book_new">Lisää uusi kirjaviite</a> 
+
     </body>
-   
+
 </html>
