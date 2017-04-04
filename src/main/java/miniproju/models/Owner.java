@@ -18,7 +18,7 @@ import org.springframework.data.jpa.domain.AbstractPersistable;
  * @author ilkka
  */
 @Entity
-public class User extends AbstractPersistable<Long> {
+public class Owner extends AbstractPersistable<Long> {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -26,12 +26,12 @@ public class User extends AbstractPersistable<Long> {
     
     private String name;
 
-//    public User() {
+//    public Owner() {
 //    }
 //
 //    ;
 //    
-//    public User(Long id, String name) {
+//    public Owner(Long id, String name) {
 //        this.id = id;
 //        this.name = name;
 //    }

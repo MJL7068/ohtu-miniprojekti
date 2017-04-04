@@ -6,14 +6,15 @@
 package miniproju.services;
 
 import java.util.List;
-import miniproju.models.User;
+
+import miniproju.models.Owner;
 
 /**
  *
  * @author ilkka
  */
 public interface UserService {
-    List<User> findAll();
-    User findWithId(Long id);
-    User create(User user);
+    List<Owner> findAll();
+    Owner findWithId(Long id);
+    Owner create(Owner owner);
 }

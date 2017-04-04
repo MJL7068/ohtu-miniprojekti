@@ -6,7 +6,8 @@
 package miniproju.services;
 
 import java.util.List;
-import miniproju.models.User;
+
+import miniproju.models.Owner;
 import miniproju.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,18 +23,18 @@ public class UserServiceJpaImpl implements UserService {
     private UserRepository userRepo;
     
     @Override
-    public List<User> findAll() {
+    public List<Owner> findAll() {
         return this.userRepo.findAll();
     }
 
     @Override
-    public User findWithId(Long id) {
+    public Owner findWithId(Long id) {
         return this.userRepo.findOne(id);
     }
 
     @Override
-    public User create(User user) {
-        return this.userRepo.save(user);
+    public Owner create(Owner owner) {
+        return this.userRepo.save(owner);
     }
     
 }
