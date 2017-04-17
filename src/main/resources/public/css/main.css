@@ -72,3 +72,6 @@ h1 {
     border-width: 1px;
 }
 
+label {
+    text-transform: capitalize;
+}

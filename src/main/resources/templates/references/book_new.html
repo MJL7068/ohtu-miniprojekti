@@ -1,44 +1,29 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+
     <head>
         <title>Lisäys</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" th:href="@{/css/main.css}" />
     </head>
 
     <body>
         <h2>Lisää uuden kirjaviitteen tiedot</h2>
         <form th:action="@{/references/book_new}" method="POST">
-            
-            <div class="form-group">
-                <label>Nimi</label>
-                <input type="text" class="form-control" id="title" name="title"></input>
-            </div>
 
-            <div class="form-group">
-                <label>Kirjoittaja</label>
-                <input type="text" class="form-control" id="author" name="author"></input>
-            </div>
-
-            <div class="form-group">
-                <label>Julkaisija</label>
-                <input type="text" class="form-control" id="publisher" name="publisher"></input>
-            </div>
-
-            <div class="form-group">
-                <label>Julkaisuvuosi</label>
-                <input type="text" class="form-control" id="year" name="year"></input>
-            </div>
-
-            <div class="form-group">
-                <label>Julkaisijan osoite</label>
-                <input type="text" class="form-control" id="address" name="address"></input>
-            </div>
-
-            <div class="form-group">
-                <label>Painos</label>
-                <input type="text" class="form-control" id="edition" name="edition"></input>
-            </div>
-            
-            <button type="submit">Lisää</button>                 
+            <select id="entrytype-dropdown" name="entrytype" onchange="updateFields()">
+                <option value="article">article</option>
+                <option value="book">book</option>
+                <option value="inproceedings">inproceedings</option>
+            </select>
+            <h3>Pakolliset</h3>
+            <section id="required-inputs" />
+            <h3>Valinnaiset</h3>
+            <section id="optional-inputs" />
+            <button id="ref-button" type="submit">Lisää</button>
         </form>
+
+        <script type="text/javascript" th:src="@{/js/entrytype.js}"></script>
     </body>
+
 </html>

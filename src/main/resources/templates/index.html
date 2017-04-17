@@ -3,27 +3,27 @@
 
     <head>
         <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Index</title>
     </head>
 
     <body>
-        <h1>Kirjaviitteet</h1>       
+        <h1>Kirjaviitteet</h1>
 
         <ul class="allReferences">
             <li th:each="ref : ${allRefs}">
-                <span th:text="${ref.title}"></span>
-                <ul>
-                    <li th:text="${ref.author}"></li>
-                    <li th:text="${ref.publisher}"></li>
-                    <li th:text="${ref.year}"></li>
-                    <li th:text="${ref.address}"></li>
-                    <li th:text="${ref.edition}"></li>
+                <h3>
+                    <span th:text="${ref.entryKey}" />
+                    (<span class="ref-type" th:text="${ref.entryType}" />)
+                </h3>
+                <ul th:each="field : ${ref.fields().entrySet()}">
+                    <li th:text="${field.getKey()} + ': ' + ${field.getValue()}"></li>
                 </ul>
+
             </li>
-            
         </ul>
-        
-        <a href="/references/book_new">Lisää uusi kirjaviite</a> 
+
+        <a href="/references/book_new">Lisää uusi kirjaviite</a>
 
     </body>
 

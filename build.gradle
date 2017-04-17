@@ -54,8 +54,11 @@ dependencies {
     compile group: 'org.seleniumhq.selenium', name: 'selenium-java', version:seleniumVersion
 
     testCompile("org.springframework.boot:spring-boot-starter-test")
+
+    compile("org.springframework.boot:spring-boot-devtools")
 }
 
 bootRun {
     jvmArgs = ["-Dspring.output.ansi.enabled=ALWAYS"]
+    addResources = true
 }
