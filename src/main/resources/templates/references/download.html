@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+    <head>
+        <title>Bibtex-lataus</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" th:href="@{/css/main.css}" />
+    </head>
+
+    <body>
+        <h2>Lataa viitteet Bibtex-muodossa</h2>
+
+        <form th:action="@{/references/download}" method="POST">
+            <div class="form-group">
+                <label>Tiedostonimi</label>
+                <input type="text" class="form-control" id="filename" name="filename"></input>
+            </div>
+            <button type="submit">Lataa</button>   
+        </form>
+
+        <a href="/">Palaa alkusivulle</a>
+
+    </body>
+
+</html>

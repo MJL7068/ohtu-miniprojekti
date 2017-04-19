@@ -37,4 +37,14 @@ public class ReferenceServiceJpaImpl implements ReferenceService {
         return this.referenceRepository.save(ref);
     }
 
+    @Override
+    public String findAllInBibtex() {
+        StringBuilder sb = new StringBuilder();
+        for (Reference reference : findAll()) {
+            sb.append(reference.toBibtexString());
+            sb.append("\n");
+        }
+        
+        return sb.toString();
+    }
 }
