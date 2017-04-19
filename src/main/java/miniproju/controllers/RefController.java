@@ -38,7 +38,7 @@ public class RefController {
         PathVariable
         - bind pathvariable to method parameter 'id'
      */
-    @RequestMapping("references/view/{id}")
+    @RequestMapping("/references/view/{id}")
     public String view(@PathVariable("id") Long id, Model model) {
         Reference ref = referenceService.findWithId(id);
         model.addAttribute("ref", ref);
