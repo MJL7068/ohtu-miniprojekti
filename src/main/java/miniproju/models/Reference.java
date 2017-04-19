@@ -9,6 +9,7 @@ import org.springframework.data.jpa.domain.AbstractPersistable;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
+import miniproju.utilities.BibtexGenerator;
 
 
 /**
@@ -96,8 +97,12 @@ public class Reference extends AbstractPersistable<Long> {
         return map;
     }
 
-    // Generated code below
+    public String toBibtexString() {
+        return BibtexGenerator.toBibtex(entryType, entryKey, fields());
+    }
 
+    // Generated code below
+    
     public Long getId() {
         return id;
     }
