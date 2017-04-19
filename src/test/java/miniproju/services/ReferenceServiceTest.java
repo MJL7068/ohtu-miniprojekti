@@ -7,8 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import static junit.framework.TestCase.assertTrue;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -19,7 +19,7 @@ public class ReferenceServiceTest {
 
     @Test
     public void newRepoIsEmpty() {
-        assertTrue(rf.findAll().isEmpty());
+        assertEquals(0, rf.findAll().size());
     }
 
     @Test
@@ -34,5 +34,14 @@ public class ReferenceServiceTest {
         int size = rf.findAll().size();
         rf.create(new Reference());
         assertEquals(size + 1, rf.findAll().size());
+    }
+
+    @Test
+    public void findAllInBibtexContainsReferenceJournalField() {
+        Reference ref = new Reference();
+        ref.setJournal("ieee");
+        rf.create(ref);
+        String bibtex = rf.findAllInBibtex();
+        assertTrue(bibtex.contains("ieee"));
     }
 }

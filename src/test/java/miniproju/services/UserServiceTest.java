@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import static junit.framework.TestCase.assertTrue;
 import static org.junit.Assert.assertEquals;
 
 @RunWith(SpringRunner.class)
@@ -19,7 +18,7 @@ public class UserServiceTest {
 
     @Test
     public void newRepoIsEmpty() {
-        assertTrue(us.findAll().isEmpty());
+        assertEquals(0, us.findAll().size());
     }
 
     @Test
