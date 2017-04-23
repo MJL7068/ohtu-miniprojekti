@@ -1,18 +1,108 @@
+const f = {
+  entrykey: "entrykey",
+  address: "address",
+  annote: "annote",
+  author: "author",
+  booktitle: "booktitle",
+  chapter: "chapter",
+  crossref: "crossref",
+  edition: "edition",
+  editor: "editor",
+  howpublished: "howpublished",
+  institution: "institution",
+  journal: "journal",
+  key: "key",
+  month: "month",
+  note: "note",
+  number: "number",
+  organization: "organization",
+  pages: "pages",
+  publisher: "publisher",
+  school: "school",
+  series: "series",
+  title: "title",
+  type: "type",
+  volume: "volume",
+  year: "year",
+};
+
 const types = {
   article: {
-    required: ["entrykey", "author", "title", "journal", "year", "volume"],
-    optional: ["number", "pages", "month", "note", "key"],
+    required: [f.author, f.title, f.journal, f.year, f.volume],
+    optional: [f.entrykey, f.number, f.pages, f.month, f.note, f.key],
   },
   book: {
-    required: ["entrykey", "author", "title", "publisher", "year"],
-    optional: ["volume", "series", "address", "edition", "month", "note", "key"],
+    required: [f.author, f.title, f.publisher, f.year],
+    optional: [f.entrykey, f.volume, f.series, f.address, f.edition, f.month, f.note, f.key],
+  },
+  booklet: {
+    required: [f.title],
+    optional: [f.entrykey, f.author, f.howpublished, f.address, f.month, f.year, f.note, f.key],
+  },
+  conference: {
+    required: [f.author, f.title, f.booktitle, f.year],
+    optional: [
+      f.entrykey, f.editor, f.volume, f.series, f.pages, f.address, f.month,
+      f.organization, f.publisher, f.note, f.key,
+    ],
+  },
+  inbook: {
+    required: [f.author, f.title, f.chapter, f.pages, f.publisher, f.year],
+    optional: [
+      f.entrykey, f.volume, f.series, f.type, f.address, f.edition, f.month,
+      f.note, f.key,
+    ],
+  },
+  incollection: {
+    required: [f.author, f.title, f.booktitle, f.publisher, f.year],
+    optional: [
+      f.entrykey, f.edition, f.volume, f.series, f.type, f.chapter, f.pages,
+      f.address, f.edition, f.month, f.note, f.key,
+    ],
   },
   inproceedings: {
-    required: ["entrykey", "author", "title", "booktitle", "year"],
+    required: [f.author, f.title, f.booktitle, f.year],
     optional: [
-      "editor", "volume", "series", "pages", "address", "month", "organization",
-      "publisher", "note", "key",
+      f.entrykey, f.editor, f.volume, f.series, f.pages, f.address, f.month,
+      f.organization, f.publisher, f.note, f.key,
     ],
+  },
+  manual: {
+    required: [f.author, f.title, f.booktitle, f.year],
+    optional: [
+      f.entrykey, f.editor, f.volume, f.series, f.pages, f.address, f.month,
+      f.organization, f.publisher, f.note, f.key,
+    ],
+  },
+  mastersthesis: {
+    required: [f.author, f.title, f.school, f.year],
+    optional: [f.entrykey, f.type, f.address, f.month, f.note, f.key],
+  },
+  misc: {
+    required: [],
+    optional: [
+      f.entrykey, f.author, f.title, f.howpublished, f.month, f.year, f.note,
+      f.key,
+    ],
+  },
+  phdthesis: {
+    required: [f.author, f.title, f.school, f.year],
+    optional: [f.entrykey, f.type, f.address, f.month, f.note, f.key],
+  },
+  proceedings: {
+    required: [f.title, f.year],
+    optional: [
+      f.entrykey, f.editor, f.volume, f.series, f.address, f.month,
+      f.organization, f.publisher, f.note, f.key,
+    ],
+  },
+  techreport: {
+    required: [f.author, f.title, f.institution, f.year],
+    optional: [f.entrykey, f.type, f.number, f.address, f.month, f.note, f.key],
+  },
+  unpublished: {
+    required: [f.author, f.title, f.note],
+    optional: [f.entrykey, f.month, f.year, f.key],
   },
 };
 

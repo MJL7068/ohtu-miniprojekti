@@ -49,7 +49,7 @@ public class Reference extends AbstractPersistable<Long> {
     private String title;
     private String type;
     private String volume;
-    private int year;
+    private Integer year;
 
     public Reference() {
     }
@@ -315,7 +315,7 @@ public class Reference extends AbstractPersistable<Long> {
         return year;
     }
 
-    public void setYear(int year) {
+    public void setYear(Integer year) {
         this.year = year;
     }
 }

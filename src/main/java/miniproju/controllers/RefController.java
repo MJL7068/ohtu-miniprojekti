@@ -55,8 +55,14 @@ public class RefController {
     @RequestMapping(value = "/references/book_new", method = POST)
     public String saveBookRef(@RequestParam Map<String, String> params) {
         params.values().removeIf(v -> v.equals(""));
-        Reference r = new Reference();
 
+        Reference r = new Reference();
+        setFields(params, r);
+        referenceService.create(r);
+        return "redirect:/";
+    }
+
+    private void setFields(Map<String, String> params, Reference r) {
         r.setEntryType(params.get("entrytype"));
         r.setEntryKey(params.get("entrykey"));
 
@@ -83,11 +89,8 @@ public class RefController {
         r.setTitle(params.get("title"));
         r.setType(params.get("type"));
         r.setVolume(params.get("volume"));
-
-        r.setYear(Integer.parseInt(params.get("year")));
-
-        referenceService.create(r);
-        return "redirect:/";
+        String yearText = params.get("year");
+        r.setYear(yearText == null ? null : Integer.parseInt(yearText));
     }
 
 }
