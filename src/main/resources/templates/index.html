@@ -19,14 +19,14 @@
                 <ul th:each="field : ${ref.fields().entrySet()}">
                     <li th:text="${field.getKey()} + ': ' + ${field.getValue()}"></li>
                 </ul>
-                <a th:href="@{/${ref.id}}">Poista</a>
+                <form th:action="@{/references/{id}/remove(id=${ref.id})}" method="POST">
+                    <input type="submit" value="Poista"/>            
+                </form>
             </li>
         </ul>
 
         <a href="/references/ref_new">Lisää uusi lähdeviite</a>
         <a href="/references/download">Lataa Bibtex</a>
-
-
 
     </body>
 

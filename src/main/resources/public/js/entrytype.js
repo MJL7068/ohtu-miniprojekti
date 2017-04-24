@@ -116,7 +116,6 @@ function createInput(field, required) {
   input.className += required ? " required" : " optional";
   input.id = field;
   input.name = field;
-  input.innerHTML = "testi";
   return input;
 }
 

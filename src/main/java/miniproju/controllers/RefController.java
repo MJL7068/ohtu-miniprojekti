@@ -63,9 +63,11 @@ public class RefController {
         return "redirect:/";
     }
     
-    @RequestMapping(value="/{id}", method=RequestMethod.DELETE)
-    public void deleteRef(@PathVariable Long id) {
+    @RequestMapping(value="/references/{id}/remove", method = POST)
+    public String deleteRef(@PathVariable Long id) {
         referenceService.remove(id);
+        
+        return "redirect:/";
     }  
 
     private void setFields(Map<String, String> params, Reference r) {
