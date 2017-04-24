@@ -19,7 +19,7 @@
                 <ul th:each="field : ${ref.fields().entrySet()}">
                     <li th:text="${field.getKey()} + ': ' + ${field.getValue()}"></li>
                 </ul>
-                <a th:href="@{/ref.id}">Poista</a>
+                <a th:href="@{/${ref.id}}">Poista</a>
             </li>
         </ul>
 
