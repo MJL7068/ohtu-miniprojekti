@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+    <head>
+        <title>Lisäys</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" th:href="@{/css/main.css}" />
+    </head>
+
+    <body>
+        <h2>Lisää uuden lähdeviitteen tiedot</h2>
+        <form th:action="@{/references/book_new}" method="POST">
+
+            <select id="entrytype-dropdown" name="entrytype" onchange="updateFields()">
+                <option value="article">article</option>
+                <option value="book">book</option>
+                <option value="booklet">booklet</option>
+                <option value="conference">conference</option>
+                <option value="inbook">inbook</option>
+                <option value="incollection">incollection</option>
+                <option value="inproceedings">inproceedings</option>
+                <option value="manual">manual</option>
+                <option value="mastersthesis">mastersthesis</option>
+                <option value="misc">misc</option>
+                <option value="phdthesis">phdthesis</option>
+                <option value="proceedings">proceedings</option>
+                <option value="techreport">techreport</option>
+                <option value="unpublished">unpublished</option>
+
+            </select>
+            <h3>Pakolliset</h3>
+            <section id="required-inputs" />
+            <h3>Valinnaiset</h3>
+            <section id="optional-inputs" />
+            <button id="ref-button" type="submit">Lisää</button>
+        </form>
+
+        <script type="text/javascript" th:src="@{/js/entrytype.js}"></script>
+    </body>
+
+</html>

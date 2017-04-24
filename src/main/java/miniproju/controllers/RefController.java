@@ -47,14 +47,14 @@ public class RefController {
         return "references/view";
     }
 
-    @RequestMapping(value = "/references/book_new", method = GET)
-    public String newBook() {
+    @RequestMapping(value = "/references/ref_new", method = GET)
+    public String newRef() {
 
-        return "references/book_new";
+        return "references/ref_new";
     }
 
-    @RequestMapping(value = "/references/book_new", method = POST)
-    public String saveBookRef(@RequestParam Map<String, String> params) {
+    @RequestMapping(value = "/references/ref_new", method = POST)
+    public String saveRef(@RequestParam Map<String, String> params) {
         params.values().removeIf(v -> v.equals(""));
 
         Reference r = new Reference();
