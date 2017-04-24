@@ -72,16 +72,16 @@ public class RefControllerTest {
     }
 
     @Test
-    public void newBookIsRendered() throws Exception {
-        mockMvc.perform(get("/references/book_new"))
+    public void newRefIsRendered() throws Exception {
+        mockMvc.perform(get("/references/ref_new"))
                 .andExpect(status().isOk())
-                .andExpect(view().name("references/book_new"));
+                .andExpect(view().name("references/ref_new"));
     }
 
     @Test
-    public void successfulPostToNewBookCreatesReferenceAndRenders() throws Exception {
+    public void successfulPostToNewRefCreatesReferenceAndRenders() throws Exception {
 
-        RequestBuilder req = post("/references/book_new")
+        RequestBuilder req = post("/references/ref_new")
 
                 .param("title", "testTitle")
                 .param("year", "1")
