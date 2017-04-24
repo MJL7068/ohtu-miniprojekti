@@ -14,6 +14,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import miniproju.services.ReferenceService;
+import org.springframework.web.bind.annotation.RequestMethod;
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
 import static org.springframework.web.bind.annotation.RequestMethod.POST;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -61,6 +62,11 @@ public class RefController {
         referenceService.create(r);
         return "redirect:/";
     }
+    
+    @RequestMapping(value="/{id}", method=RequestMethod.DELETE)
+    public void deleteRef(@PathVariable Long id) {
+        referenceService.remove(id);
+    }  
 
     private void setFields(Map<String, String> params, Reference r) {
         r.setEntryType(params.get("entrytype"));

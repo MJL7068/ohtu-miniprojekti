@@ -19,7 +19,9 @@
                 <ul th:each="field : ${ref.fields().entrySet()}">
                     <li th:text="${field.getKey()} + ': ' + ${field.getValue()}"></li>
                 </ul>
-
+                <form method="DELETE" action="/${ref.fields().getId()}">
+                    <button id="ref-button" type="submit">Lisää</button>
+                </form>
             </li>
         </ul>
 

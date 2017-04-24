@@ -14,6 +14,7 @@ import miniproju.models.Reference;
  */
 public interface ReferenceService {
     List<Reference> findAll();
+    void remove(Long id);
     Reference findWithId(Long id);
     Reference create(Reference ref);
     String findAllInBibtex();

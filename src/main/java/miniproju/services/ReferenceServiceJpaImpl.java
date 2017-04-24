@@ -31,6 +31,11 @@ public class ReferenceServiceJpaImpl implements ReferenceService {
     public Reference findWithId(Long id) {
         return this.referenceRepository.findOne(id);
     }
+    
+    @Override
+    public void remove(Long id) {
+        this.referenceRepository.delete(id);
+    }
 
     @Override
     public Reference create(Reference ref) {
@@ -47,4 +52,5 @@ public class ReferenceServiceJpaImpl implements ReferenceService {
         
         return sb.toString();
     }
+
 }
