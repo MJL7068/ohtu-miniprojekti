@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Index</title>
+    </head>
+
+    <body>
+        <h1>Lähdeviitteet</h1>
+
+
+
+        <h3>
+            <span th:text="${ref.entryKey}" />
+            (<span class="ref-type" th:text="${ref.entryType}" />)
+        </h3>
+
+        <form th:action="@{/references/{id}/edit(id=${ref.id})}" method="POST">
+            <ul th:each="field : ${ref.fields().entrySet()}">
+                <label th:text="${field.getKey()}"></label>
+                <input class="form-control" th:value="${field.getValue()}" />
+            </ul>
+
+            <input type="submit" value="Muokkaa"/>            
+        </form>
+    </body>
+
+</html>

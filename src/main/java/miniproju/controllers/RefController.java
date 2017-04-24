@@ -5,6 +5,7 @@
  */
 package miniproju.controllers;
 
+import java.util.List;
 import java.util.Map;
 
 import miniproju.models.Reference;
@@ -52,6 +53,15 @@ public class RefController {
 
         return "references/ref_new";
     }
+    
+    @RequestMapping(value = "/references/{id}", method = GET)
+    public String editRefView(@PathVariable("id") Long id, Model model) {
+        Reference ref = referenceService.findWithId(id);
+        model.addAttribute("ref", ref);
+        
+
+        return "references/ref_edit";
+    }
 
     @RequestMapping(value = "/references/ref_new", method = POST)
     public String saveRef(@RequestParam Map<String, String> params) {
@@ -66,6 +76,13 @@ public class RefController {
     @RequestMapping(value="/references/{id}/remove", method = POST)
     public String deleteRef(@PathVariable Long id) {
         referenceService.remove(id);
+        
+        return "redirect:/";
+    }  
+    
+    @RequestMapping(value="/references/{id}/edit", method = POST)
+    public String editRef(@PathVariable Long id, @RequestParam Map<String, String> params) {
+        
         
         return "redirect:/";
     }  
