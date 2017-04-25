@@ -21,7 +21,6 @@ public class ReferenceServiceJpaImpl implements ReferenceService {
     @Autowired
     private ReferenceRepository referenceRepository;
 
-
     @Override
     public List<Reference> findAll() {
         return this.referenceRepository.findAll();
@@ -31,7 +30,7 @@ public class ReferenceServiceJpaImpl implements ReferenceService {
     public Reference findWithId(Long id) {
         return this.referenceRepository.findOne(id);
     }
-    
+
     @Override
     public void remove(Long id) {
         this.referenceRepository.delete(id);
@@ -39,9 +38,10 @@ public class ReferenceServiceJpaImpl implements ReferenceService {
 
     @Override
     public Reference create(Reference ref) {
+        autoEntryKey(ref);
         return this.referenceRepository.save(ref);
     }
-    
+
     @Override
     public Reference update(Reference ref) {
         return this.referenceRepository.save(ref);
@@ -54,8 +54,40 @@ public class ReferenceServiceJpaImpl implements ReferenceService {
             sb.append(reference.toBibtexString());
             sb.append("\n");
         }
-        
+
         return sb.toString();
+    }
+
+    private void autoEntryKey(Reference ref) {
+        String entryKey = ref.getEntryKey();
+
+        if (entryKey == null) {
+            entryKey = generateEntryKeyByAuthorsAndYear(ref);
+        }
+
+        if (referenceRepository.existsByEntryKey(entryKey)) {
+            entryKey = appendExistingEntryKey(entryKey);
+        }
+
+        ref.setEntryKey(entryKey);
+    }
+
+    private String generateEntryKeyByAuthorsAndYear(Reference ref) {
+        StringBuilder sb = new StringBuilder();
+        ref.getAuthorSurnames().forEach(surname -> sb.append(surname.toUpperCase().charAt(0)));
+        sb.append(ref.getYear());
+
+        return sb.toString();
+    }
+
+    private String appendExistingEntryKey(String entryKey) {
+        int uniqueNumber = 2;
+
+        while (referenceRepository.existsByEntryKey(entryKey + "-" + uniqueNumber)) {
+            uniqueNumber++;
+        }
+
+        return entryKey + "-" + uniqueNumber;
     }
 
 }

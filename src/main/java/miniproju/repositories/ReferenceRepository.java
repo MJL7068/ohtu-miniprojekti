@@ -18,4 +18,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 @Repository
 public interface ReferenceRepository extends JpaRepository<Reference, Long> {
     
+    public boolean existsByEntryKey(String entryKey);
+    
 }

@@ -34,11 +34,10 @@ public class IndexContoller {
     public String index(Model model) {
         List<Reference> allRefs = refService.findAll();
         model.addAttribute("allRefs", allRefs);
-        
-//        // testausta
-//        for (Reference allRef : allRefs) {
-//            System.out.println(allRef.toBibtexString());
-//        }
+
+
+        allRefs.forEach(ref -> System.out.println(ref.getEntryKey()));
+        allRefs.forEach(ref -> ref.getAuthorSurnames().forEach(surname -> System.out.println(surname)));
 
         return "index";
     }

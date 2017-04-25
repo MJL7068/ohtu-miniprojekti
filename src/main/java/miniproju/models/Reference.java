@@ -1,5 +1,7 @@
 package miniproju.models;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -8,9 +10,11 @@ import javax.persistence.Id;
 import org.springframework.data.jpa.domain.AbstractPersistable;
 
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 import miniproju.utilities.BibtexGenerator;
-
 
 /**
  * @author ilkka
@@ -89,6 +93,7 @@ public class Reference extends AbstractPersistable<Long> {
 
     /**
      * Get all non-null fields.
+     *
      * @return map of fields where none is null.
      */
     public Map<String, Object> fields() {
@@ -101,8 +106,14 @@ public class Reference extends AbstractPersistable<Long> {
         return BibtexGenerator.toBibtex(entryType, entryKey, fields());
     }
 
+    public List<String> getAuthorSurnames() {
+        return Pattern.compile(" and ")
+                .splitAsStream(author)
+                .map(authors -> authors.split(",")[0].trim())
+                .collect(Collectors.toList());
+    }
+
     // Generated code below
-    
     public Long getId() {
         return id;
     }
