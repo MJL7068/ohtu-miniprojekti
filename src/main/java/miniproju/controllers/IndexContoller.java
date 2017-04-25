@@ -35,10 +35,6 @@ public class IndexContoller {
         List<Reference> allRefs = refService.findAll();
         model.addAttribute("allRefs", allRefs);
 
-
-        allRefs.forEach(ref -> System.out.println(ref.getEntryKey()));
-        allRefs.forEach(ref -> ref.getAuthorSurnames().forEach(surname -> System.out.println(surname)));
-
         return "index";
     }
 

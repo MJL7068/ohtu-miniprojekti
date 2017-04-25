@@ -38,7 +38,7 @@ public class ReferenceServiceJpaImpl implements ReferenceService {
 
     @Override
     public Reference create(Reference ref) {
-        autoEntryKey(ref);
+        autoUniqueEntryKey(ref);
         return this.referenceRepository.save(ref);
     }
 
@@ -58,7 +58,7 @@ public class ReferenceServiceJpaImpl implements ReferenceService {
         return sb.toString();
     }
 
-    private void autoEntryKey(Reference ref) {
+    private void autoUniqueEntryKey(Reference ref) {
         String entryKey = ref.getEntryKey();
 
         if (entryKey == null) {
