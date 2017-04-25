@@ -75,8 +75,13 @@ public class ReferenceServiceJpaImpl implements ReferenceService {
     private String generateEntryKeyByAuthorsAndYear(Reference ref) {
         StringBuilder sb = new StringBuilder();
         ref.getAuthorSurnames().forEach(surname -> sb.append(surname.toUpperCase().charAt(0)));
-        sb.append(ref.getYear());
-
+        
+        try {
+            sb.append(ref.getYear());
+            
+        } catch (Exception e) {
+        }
+        
         return sb.toString();
     }
 

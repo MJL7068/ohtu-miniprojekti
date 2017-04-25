@@ -107,10 +107,16 @@ public class Reference extends AbstractPersistable<Long> {
     }
 
     public List<String> getAuthorSurnames() {
-        return Pattern.compile(" and ")
+        List<String> surnames = new ArrayList<>();
+        
+        if (author != null) {
+        surnames = Pattern.compile(" and ")
                 .splitAsStream(author)
                 .map(authors -> authors.split(",")[0].trim())
                 .collect(Collectors.toList());
+        }
+        
+        return surnames;
     }
 
     // Generated code below
