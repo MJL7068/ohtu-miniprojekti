@@ -17,6 +17,7 @@ public interface ReferenceService {
     void remove(Long id);
     Reference findWithId(Long id);
     Reference create(Reference ref);
+    Reference update(Reference ref);
     String findAllInBibtex();
     
 }

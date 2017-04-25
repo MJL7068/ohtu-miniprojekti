@@ -44,7 +44,7 @@ public class RefController {
     public String view(@PathVariable("id") Long id, Model model) {
         Reference ref = referenceService.findWithId(id);
         model.addAttribute("ref", ref);
-        
+
         return "references/view";
     }
 
@@ -53,12 +53,11 @@ public class RefController {
 
         return "references/ref_new";
     }
-    
+
     @RequestMapping(value = "/references/{id}", method = GET)
     public String editRefView(@PathVariable("id") Long id, Model model) {
         Reference ref = referenceService.findWithId(id);
         model.addAttribute("ref", ref);
-        
 
         return "references/ref_edit";
     }
@@ -68,28 +67,33 @@ public class RefController {
         params.values().removeIf(v -> v.equals(""));
 
         Reference r = new Reference();
-        setFields(params, r);
+        setFields(params, r, false);
         referenceService.create(r);
         return "redirect:/";
     }
-    
-    @RequestMapping(value="/references/{id}/remove", method = POST)
+
+    @RequestMapping(value = "/references/{id}/remove", method = POST)
     public String deleteRef(@PathVariable Long id) {
         referenceService.remove(id);
-        
-        return "redirect:/";
-    }  
-    
-    @RequestMapping(value="/references/{id}/edit", method = POST)
-    public String editRef(@PathVariable Long id, @RequestParam Map<String, String> params) {
-        
-        
-        return "redirect:/";
-    }  
 
-    private void setFields(Map<String, String> params, Reference r) {
-        r.setEntryType(params.get("entrytype"));
-        r.setEntryKey(params.get("entrykey"));
+        return "redirect:/";
+    }
+
+    @RequestMapping(value = "/references/{id}/edit", method = POST)
+    public String editRef(@PathVariable Long id, @RequestParam Map<String, String> params) {
+        params.values().removeIf(v -> v.equals(""));
+
+        Reference r = referenceService.findWithId(id);
+        setFields(params, r, true);
+        referenceService.update(r);
+        return "redirect:/";
+    }
+
+    private void setFields(Map<String, String> params, Reference r, boolean edit) {
+        if (!edit) {
+            r.setEntryType(params.get("entrytype"));
+            r.setEntryKey(params.get("entrykey"));
+        }
 
         r.setAddress(params.get("address"));
         r.setAnnote(params.get("annote"));

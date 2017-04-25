@@ -20,11 +20,13 @@
         <form th:action="@{/references/{id}/edit(id=${ref.id})}" method="POST">
             <ul th:each="field : ${ref.fields().entrySet()}">
                 <label th:text="${field.getKey()}"></label>
-                <input class="form-control" th:value="${field.getValue()}" />
+                <input class="form-control" th:id="${field.getKey()}" th:name="${field.getKey()}" th:value="${field.getValue()}" />
             </ul>
 
             <input type="submit" value="Muokkaa"/>            
         </form>
+        
+        <a href="/">Takaisin</a>
     </body>
 
 </html>

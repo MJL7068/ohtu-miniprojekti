@@ -41,6 +41,11 @@ public class ReferenceServiceJpaImpl implements ReferenceService {
     public Reference create(Reference ref) {
         return this.referenceRepository.save(ref);
     }
+    
+    @Override
+    public Reference update(Reference ref) {
+        return this.referenceRepository.save(ref);
+    }
 
     @Override
     public String findAllInBibtex() {
