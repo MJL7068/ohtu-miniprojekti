@@ -17,10 +17,10 @@ public class ReferenceServiceTest {
     @Autowired
     private ReferenceService rf;
 
-    @Test
-    public void newRepoIsEmpty() {
-        assertEquals(0, rf.findAll().size());
-    }
+//    @Test
+//    public void newRepoIsEmpty() {        
+//        assertEquals(0, rf.findAll().size());
+//    }
 
     @Test
     public void addNewReferenceIsFound() {
@@ -51,5 +51,41 @@ public class ReferenceServiceTest {
         rf.create(ref);
         String bibtex = rf.findAllInBibtex();
         assertTrue(bibtex.contains("ieee"));
+    }
+    
+    @Test
+    public void deleteRefWorks() {        
+        rf.create(new Reference("one"));
+        int size = rf.findAll().size();        
+        Reference two = new Reference("two");
+        rf.create(two);
+        rf.remove(two.getId());
+        
+        assertEquals(size, rf.findAll().size());
+    }
+    
+    @Test
+    public void entryKeyIsGeneratedWhenNoEntryKeyWasSetByUser() {
+        Reference ref = new Reference();
+        ref.setAuthor("Surname, Firstname");
+        ref.setYear(2000);
+        rf.create(ref);
+        
+        assertEquals("S2000", ref.getEntryKey());
+    }
+    
+    @Test
+    public void newUniqueEntryKeyIsGeneratedWhenEntryKeyWasUsedBefore() {
+        Reference ref = new Reference();
+        ref.setAuthor("Surname, Firstname");
+        ref.setYear(1000);
+        rf.create(ref);
+        
+        Reference ref2 = new Reference();
+        ref2.setAuthor("Surname, Firstname");
+        ref2.setYear(1000);
+        rf.create(ref2);
+        
+        assertEquals("S1000-2", ref2.getEntryKey());
     }
 }

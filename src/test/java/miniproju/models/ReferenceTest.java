@@ -29,4 +29,12 @@ public class ReferenceTest {
         String v = "@Article{123,\nauthor = {{A}llan {C}ollins and {J}ohn {S}eely {B}rown and {A}nn {H}olum},\njournal = {{A}merican {E}ducator},\npages = {38-46},\ntitle = {{C}ognitive apprenticeship: making thinking visible},\nvolume = {6},\nyear = {1991}\n}";
         assertEquals(v, ref.toBibtexString());
     }
+    
+    @Test
+    public void authorSurnamesReturnedCorrectly() {
+        ref.setAuthor("FirstSurname, Name and SecondSurname, Name and ThirdSurname, Name");
+        assertEquals("FirstSurname", ref.getAuthorSurnames().get(0));
+        assertEquals("SecondSurname", ref.getAuthorSurnames().get(1));
+        assertEquals("ThirdSurname", ref.getAuthorSurnames().get(2));
+    }
 }

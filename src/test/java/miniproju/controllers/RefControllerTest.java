@@ -80,16 +80,14 @@ public class RefControllerTest {
     
     @Test
     public void editRefIsRendered() throws Exception {
-//        mockMvc.perform(get("references/edit/{id}", 1L))
-//                .andExpect(status().isOk())
-//                .andExpect(view().name("references/ref_edit"));
+        mockMvc.perform(get("/references/edit/{id}", 1L))
+                .andExpect(status().isOk())
+                .andExpect(view().name("references/ref_edit"));
     }
 
     @Test
     public void successfulPostToNewRefCreatesReferenceAndRenders() throws Exception {
-
         RequestBuilder req = post("/references/ref_new")
-
                 .param("title", "testTitle")
                 .param("year", "1")
                 .accept(MediaType.ALL);
@@ -99,6 +97,22 @@ public class RefControllerTest {
                 .andExpect(view().name("redirect:/"));
         
         verify(refService, times(1)).create(any());
+        verifyNoMoreInteractions(refService);
+    }
+    
+    @Test
+    public void succesfulPostToEditRefUpdatesReferenceAndRenders() throws Exception {        
+        RequestBuilder req = post("/references/{id}/edit", 1L)
+                .param("title", "testTitle")
+                .param("year", "1")
+                .accept(MediaType.ALL);
+        
+        mockMvc.perform(req)
+                .andExpect(status().is3xxRedirection())
+                .andExpect(view().name("redirect:/"));
+        
+        verify(refService, times(1)).findWithId(any());
+        verify(refService, times(1)).update(any());
         verifyNoMoreInteractions(refService);
     }
 
