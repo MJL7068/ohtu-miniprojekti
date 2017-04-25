@@ -22,6 +22,8 @@ public class BibTexGeneratorTest {
     
     private HashMap<String, Object> unemptyMap;
     
+    private HashMap<String, Object> mapWithSkands;
+    
     @Before
     public void setUp() {
         emptyMap = new HashMap<>();
@@ -30,6 +32,11 @@ public class BibTexGeneratorTest {
         unemptyMap.put("author", "Milton {Abramowitz}");
         unemptyMap.put("title", "Handbook of Mathematical Functions with Formulas, Graphs, and Mathematical Tables");
         unemptyMap.put("publisher", "Dover");
+        
+        mapWithSkands = new HashMap<>();
+        mapWithSkands.put("author", "Mika Häkkinen");
+        mapWithSkands.put("title", "Formula");
+        mapWithSkands.put("publisher", "F1");
     }
     
     @Test
@@ -46,6 +53,7 @@ public class BibTexGeneratorTest {
     
     @Test
     public void toBibTexWorkdWithSkands() {
-        //TODO
+        String v = "@Book{123,\nauthor = {{M}ika {H}\\\"{a}kkinen},\npublisher = {{F}1},\ntitle = {{F}ormula}\n}";
+        assertEquals(v, BibtexGenerator.toBibtex("Book", "123", mapWithSkands));
     }
 }

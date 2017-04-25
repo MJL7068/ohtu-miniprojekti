@@ -54,7 +54,7 @@ public class RefController {
         return "references/ref_new";
     }
 
-    @RequestMapping(value = "/references/{id}", method = GET)
+    @RequestMapping(value = "/references/edit/{id}", method = GET)
     public String editRefView(@PathVariable("id") Long id, Model model) {
         Reference ref = referenceService.findWithId(id);
         model.addAttribute("ref", ref);

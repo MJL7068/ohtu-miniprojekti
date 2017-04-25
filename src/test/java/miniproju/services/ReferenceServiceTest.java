@@ -35,6 +35,14 @@ public class ReferenceServiceTest {
         rf.create(new Reference());
         assertEquals(size + 1, rf.findAll().size());
     }
+    
+    @Test
+    public void editRefWorks() {
+        Reference ref = rf.create(new Reference("testaus"));
+        ref.setTitle("EDIT");
+        rf.update(ref);
+        assertEquals("EDIT", rf.findWithId(ref.getId()).getTitle());
+    }
 
     @Test
     public void findAllInBibtexContainsReferenceJournalField() {

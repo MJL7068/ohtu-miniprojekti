@@ -77,6 +77,13 @@ public class RefControllerTest {
                 .andExpect(status().isOk())
                 .andExpect(view().name("references/ref_new"));
     }
+    
+    @Test
+    public void editRefIsRendered() throws Exception {
+//        mockMvc.perform(get("references/edit/{id}", 1L))
+//                .andExpect(status().isOk())
+//                .andExpect(view().name("references/ref_edit"));
+    }
 
     @Test
     public void successfulPostToNewRefCreatesReferenceAndRenders() throws Exception {
