@@ -5,3 +5,4 @@
 
 * [Projektin backlog](https://docs.google.com/spreadsheets/d/1EB2T7uyCparEjprCJ88-f2S6ZnvXSeOPrIzwH-eVUJ4/pubhtml)
 * [Heroku](https://pure-coast-94327.herokuapp.com/)
+* [Projektin integraatiotestaus](https://github.com/MJL7068/ohtu-miniprojekti-integrationTest)
