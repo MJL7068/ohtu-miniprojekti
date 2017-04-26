@@ -20,13 +20,29 @@ public class Stepdefs {
     @Given("^uusi viite is selected$")
     public void uusi_viite_is_selected() throws Throwable {
         driver.get(baseUrl);
-        WebElement element = driver.findElement(By.linkText("Lisää uusi kirjaviite"));
+        WebElement element = driver.findElement(By.linkText("Lisää uusi lähdeviite"));
         element.click();
+    }
+    
+    @Given("^user is in the main page and there is a reference with the title \"([^\"]*)\" in the database$")
+    public void user_is_in_the_main_page_and_there_is_a_reference_with_the_title_testireferenssi(String arg1) throws Throwable {
+        driver.get(baseUrl);
+        pageHasContent("Lähdeviitteet");
+        
+//        WebElement element = null;
+//        if (driver.findElement(by))
+        teeTestiReferenssi(arg1);
+    }
+    
+    @When("^button with the text \"([^\"]*)\" next to the reference with the title \"([^\"]*)\" is pressed$")
+    public void button_poista_next_to_the_testireferenssi_is_pressed(String arg1, String arg2) throws Throwable {
+        WebElement element = driver.findElement(By.id(arg2));
+        element.submit();
     }
 
     @When("^\"([^\"]*)\" is selected and title \"([^\"]*)\" and author \"([^\"]*)\" and publisher \"([^\"]*)\" and year \"([^\"]*)\" and address \"([^\"]*)\" and edition \"([^\"]*)\" are entered$")
     public void book_is_selected_and_nimi_and_kirjoittaja_and_publisher_and_julkaisuvuosi_and_julkaisijan_osoite_and_painos_are_entered(String arg1, String arg2, String arg3, String arg4, String arg5, String arg6, String arg7) throws Throwable {
-        pageHasContent("Lisää uuden kirjaviitteen tiedot");
+        pageHasContent("Lisää uuden lähdeviitteen tiedot");
 
         Select dropdown = new Select(driver.findElement(By.name("entrytype")));
         dropdown.selectByVisibleText(arg1);
@@ -61,7 +77,7 @@ public class Stepdefs {
     
     @When("^\"([^\"]*)\" is selected and title \"([^\"]*)\" and author \"([^\"]*)\" and journal \"([^\"]*)\" and year \"([^\"]*)\" and volume \"([^\"]*)\" and number \"([^\"]*)\" are entered$")
     public void article_is_selected_and_title_and_author_and_journal_and_year_and_volume_and_number_are_entered(String arg1, String arg2, String arg3, String arg4, String arg5, String arg6, String arg7) throws Throwable {
-        pageHasContent("Lisää uuden kirjaviitteen tiedot");
+        pageHasContent("Lisää uuden lähdeviitteen tiedot");
 
         Select dropdown = new Select(driver.findElement(By.name("entrytype")));
         dropdown.selectByVisibleText(arg1);
@@ -96,7 +112,7 @@ public class Stepdefs {
     
     @When("^\"([^\"]*)\" is selected and title \"([^\"]*)\" and author \"([^\"]*)\" and booktitle \"([^\"]*)\" and year \"([^\"]*)\" and pages \"([^\"]*)\" and publisher \"([^\"]*)\" are entered$")
     public void inproceedings_is_selected_and_title_and_author_and_booktitle_and_year_and_pages_and_publisher_are_entered(String arg1, String arg2, String arg3, String arg4, String arg5, String arg6, String arg7) throws Throwable {
-        pageHasContent("Lisää uuden kirjaviitteen tiedot");
+        pageHasContent("Lisää uuden lähdeviitteen tiedot");
 
         Select dropdown = new Select(driver.findElement(By.name("entrytype")));
         dropdown.selectByVisibleText(arg1);
@@ -131,9 +147,23 @@ public class Stepdefs {
 
     @Then("^the reference is added and user is returned to the front page$")
     public void the_reference_is_added_and_user_is_returned_to_the_front_page() throws Throwable {
-        pageHasContent("Kirjaviitteet");
+        pageHasContent("Lähdeviitteet");
         
         sleep(1);
+    }
+    
+    @Then("^the reference with the title \"([^\"]*)\" is removed$")
+    public void the_reference_with_the_title_is_removed(String arg1) throws Throwable {
+        assertTrue(!driver.getPageSource().contains(arg1));
+    }
+    
+    public void teeTestiReferenssi(String title) throws Throwable {
+        WebElement element = driver.findElement(By.linkText("Lisää uusi lähdeviite"));
+        element.click();
+        
+        book_is_selected_and_nimi_and_kirjoittaja_and_publisher_and_julkaisuvuosi_and_julkaisijan_osoite_and_painos_are_entered("book", title, "kirjoittaja", "julkaisija", "1999", "osoite", "22");
+    
+        pageHasContent("Lähdeviitteet");
     }
 
     @After
