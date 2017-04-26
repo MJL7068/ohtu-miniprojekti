@@ -1,14 +1,23 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <head>'
         <title>Index</title>
+        <meta charset="UTF-8" />
+        <link rel="stylesheet" th:href="@{/css/main.css}" />
+        
     </head>
 
     <body>
+                 <ul>
+                 <li><a href="/">Viitteeni</a></li>              
+                 <li><a href="/references/ref_new">Uusi viite</a></li>
+                 <li> <a href="/references/download">Lataa BibTex</a> </li>
+
+                </ul> 
+       
         <h1>Lähdeviitteet</h1>
+        <div>
 
         <ul class="allReferences">
             <li th:each="ref : ${allRefs}">
@@ -27,9 +36,8 @@
                 </form>
             </li>
         </ul>
+        </div>
 
-        <a href="/references/ref_new">Lisää uusi lähdeviite</a>
-        <a href="/references/download">Lataa Bibtex</a>
 
     </body>
 

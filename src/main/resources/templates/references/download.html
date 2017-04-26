@@ -8,8 +8,16 @@
     </head>
 
     <body>
-        <h2>Lataa viitteet Bibtex-muodossa</h2>
+     
+       
+          <ul>
+                 <li><a href="/">Viitteeni</a></li>              
+                 <li><a href="/references/ref_new">Uusi viite</a></li>
+                 <li> <a href="/references/download">Lataa BibTex</a> </li>
 
+              </ul> 
+        <div>
+        <h2>Lataa viitteet Bibtex-muodossa</h2>
         <form th:action="@{/references/download}" method="POST">
             <div class="form-group">
                 <label>Tiedostonimi</label>
@@ -17,8 +25,8 @@
             </div>
             <button type="submit">Lataa</button>   
         </form>
-
-        <a href="/">Palaa alkusivulle</a>
+        </div>
+       
 
     </body>
 
