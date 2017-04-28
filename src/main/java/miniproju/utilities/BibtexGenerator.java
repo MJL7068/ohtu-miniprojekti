@@ -15,18 +15,17 @@ import java.util.Map;
  */
 public class BibtexGenerator {
 
-    private static final Map<String, String> scandis;
+    private static final String[][] replacements;
 
     // Map character replacements
     static {
-        Map<String, String> m = new HashMap<>();
-        m.put("ä", "\\\"{a}");
-        m.put("Ä", "\\\"{A}");
-        m.put("ö", "\\\"{o}");
-        m.put("Ö", "\\\"{O}");
-        m.put("å", "\\aa");
-        m.put("Å", "\\AA");
-        scandis = Collections.unmodifiableMap(m);
+        replacements = new String[6][];
+        replacements[0] = new String[] {"ä", "\\\"{a}"};
+        replacements[1] = new String[] {"Ä", "\\\"{A}"};
+        replacements[2] = new String[] {"ö", "\\\"{o}"};
+        replacements[3] = new String[] {"Ö", "\\\"{O}"};
+        replacements[4] = new String[] {"å", "\\aa"};
+        replacements[5] = new String[] {"Å", "\\AA"};
     }
 
     private BibtexGenerator() {
@@ -41,7 +40,7 @@ public class BibtexGenerator {
 
             String fieldValue = fields.get(fieldName).toString();
             fieldValue = preserveCapitals(fieldValue);
-            fieldValue = replaceScandis(fieldValue);
+            fieldValue = replaceScandics(fieldValue);
 
             sb.append(fieldValue).append("}");
             sb.append(",\n");
@@ -56,10 +55,9 @@ public class BibtexGenerator {
         return s.replaceAll("([A-Z])", "{$1}");
     }
 
-    private static String replaceScandis(String s) {
-        for (String scandi : scandis.keySet()) {
-            s = s.replace(scandi, scandis.get(scandi));
-
+    private static String replaceScandics(String s) {
+        for (String[] rep : replacements) {
+            s = s.replace(rep[0], rep[1]);
         }
         return s;
     }
