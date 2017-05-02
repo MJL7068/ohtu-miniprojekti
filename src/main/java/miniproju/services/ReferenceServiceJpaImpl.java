@@ -9,6 +9,8 @@ import java.util.List;
 import miniproju.models.Reference;
 import miniproju.repositories.ReferenceRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 /**
@@ -75,13 +77,13 @@ public class ReferenceServiceJpaImpl implements ReferenceService {
     private String generateEntryKeyByAuthorsAndYear(Reference ref) {
         StringBuilder sb = new StringBuilder();
         ref.getAuthorSurnames().forEach(surname -> sb.append(surname.toUpperCase().charAt(0)));
-        
+
         try {
             sb.append(ref.getYear());
-            
+
         } catch (Exception e) {
         }
-        
+
         return sb.toString();
     }
 
@@ -93,6 +95,11 @@ public class ReferenceServiceJpaImpl implements ReferenceService {
         }
 
         return entryKey + "-" + uniqueNumber;
+    }
+
+    @Override
+    public Page<Reference> findWithPage(Pageable pageable) {
+        return referenceRepository.findAll(pageable);
     }
 
 }
