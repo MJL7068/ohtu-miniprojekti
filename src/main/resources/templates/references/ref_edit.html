@@ -8,15 +8,9 @@
         <title>Index</title>
     </head>
 
-    <body>
-       
-          <ul>
-                 <li><a href="/">Viitteeni</a></li>              
-                 <li><a href="/references/ref_new">Uusi viite</a></li>
-                 <li> <a href="/references/download">Lataa BibTex</a> </li>
-
-            </ul> 
-            <h1>Lähdeviitteet</h1>
+    <body> 
+        <div th:replace="fragments/navigation_fragment"></div>
+        <h1>Lähdeviitteet</h1>
         <h3>
             <span th:text="${ref.entryKey}" />
             (<span class="ref-type" th:text="${ref.entryType}" />)
