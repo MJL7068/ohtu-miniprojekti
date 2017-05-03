@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 
-    <head>'
+    <head>
         <title>Index</title>
         <meta charset="UTF-8" />
         <link rel="stylesheet" th:href="@{/css/main.css}" />
@@ -11,43 +11,44 @@
     <body>
         <div th:replace="fragments/navigation_fragment"></div>
         <h1>Lähdeviitteet</h1>
+        
+        <div th:replace="fragments/pagination_fragment"></div>
         <div>
-
             <ul class="allReferences">
                 <li th:each="ref : ${allRefs}">
-                
-                     <div class="ref">
-                    <h3>
-                        <span th:text="${ref.entryKey}" />
-                        (<span class="ref-type" th:text="${ref.entryType}" />)
-                    </h3>
-                   
-                    <ul th:each="field : ${ref.fields().entrySet()}">
-                        <li th:text="${field.getKey()} + ': ' + ${field.getValue()}"></li>
-                    </ul>
-                    <form th:action="@{/references/{id}/remove(id=${ref.id})}" method="POST">
-                        <input type="submit" th:id="${ref.title}" value="Poista"/>            
-                    </form>
-                    <form th:action="@{/references/edit/{id}(id=${ref.id})}" method="GET">
-                        <input type="submit" value="Muokkaa"/>            
-                    </form>
+
+                    <div class="ref">
+                        <h3>
+                            <span th:text="${ref.entryKey}" />
+                            (<span class="ref-type" th:text="${ref.entryType}" />)
+                        </h3>
+
+                        <ul th:each="field : ${ref.fields().entrySet()}">
+                            <li th:text="${field.getKey()} + ': ' + ${field.getValue()}"></li>
+                        </ul>
+                        <form th:action="@{/references/{id}/remove(id=${ref.id})}" method="POST">
+                            <input type="submit" th:id="${ref.title}" value="Poista"/>            
+                        </form>
+                        <form th:action="@{/references/edit/{id}(id=${ref.id})}" method="GET">
+                            <input type="submit" value="Muokkaa"/>            
+                        </form>
                     </div>
-               
+
                 </li>
             </ul>
-            </div>
-            
-
-
-        <div class="pagination" th:if="${onlyOne} == false">
-            <p>Sivut</p>
-            <span th:each="page:${#numbers.sequence(0, end - 1)}">
-                <a th:href="@{/(page=${page})}">
-                    <b><td th:if="${current} == ${page}" th:text="${page}"></td></b>
-                    <td th:if="${current} != ${page}" th:text="${page}"></td>              
-                </a>
-            </span>
         </div>
+
+
+        <div th:replace="fragments/pagination_fragment"></div>
+        <!--        <div class="pagination" th:if="${onlyOne} == false">
+                    <p>Sivut</p>
+                    <span th:each="page:${#numbers.sequence(0, end - 1)}">
+                        <a th:href="@{/(page=${page})}">
+                            <b><td th:if="${current} == ${page}" th:text="${page}"></td></b>
+                            <td th:if="${current} != ${page}" th:text="${page}"></td>              
+                        </a>
+                    </span>
+                </div>-->
 
 
     </body>
