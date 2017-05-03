@@ -29,20 +29,6 @@ public class IndexController {
     @Autowired
     private ReferenceService refService;
 
-    @RequestMapping("/helloworld")
-    @ResponseBody
-    String helloWorld() {
-        return "Hello World!";
-    }
-
-//    @RequestMapping("/")
-//    public String index(Model model) {
-//        List<Reference> allRefs = refService.findAll();
-//        model.addAttribute("allRefs", allRefs);
-//
-//        return "index";
-//    }
-
     @RequestMapping(value = "/", method = GET)
     public String listRef(@PageableDefault(size = 5,
             direction = Sort.Direction.ASC,

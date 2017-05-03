@@ -22,6 +22,9 @@ public class ReferenceServiceJpaImpl implements ReferenceService {
 
     @Autowired
     private ReferenceRepository referenceRepository;
+    
+//    @Autowired
+//    private ReferenceKeyGeneratorService keyGenerator;
 
     @Override
     public List<Reference> findAll() {
@@ -40,6 +43,7 @@ public class ReferenceServiceJpaImpl implements ReferenceService {
 
     @Override
     public Reference create(Reference ref) {
+        //keyGenerator.autoUniqueEntryKey(ref, referenceRepository);
         autoUniqueEntryKey(ref);
         return this.referenceRepository.save(ref);
     }

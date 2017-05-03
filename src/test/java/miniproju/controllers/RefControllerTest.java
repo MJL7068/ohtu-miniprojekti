@@ -115,5 +115,18 @@ public class RefControllerTest {
         verify(refService, times(1)).update(any());
         verifyNoMoreInteractions(refService);
     }
+    
+    @Test
+    public void succesfulPostToRemoveRefUpdatesReferenceAndRenders() throws Exception {        
+        RequestBuilder req = post("/references/{id}/remove", 1L)
+                .accept(MediaType.ALL);
+        
+        mockMvc.perform(req)
+                .andExpect(status().is3xxRedirection())
+                .andExpect(view().name("redirect:/"));
+        
+        verify(refService, times(0)).findWithId(any());
+        verify(refService, times(0)).update(any());
+    }
 
 }
