@@ -8,12 +8,7 @@
     </head>
 
     <body>
-          <ul>
-                 <li><a href="/">Viitteeni</a></li>
-                 <li><a href="/references/ref_new">Uusi viite</a></li>
-                 <li> <a href="/references/download">Lataa BibTex</a> </li>
-
-            </ul>
+        <div th:replace="fragments/navigation_fragment"></div>
         <div>
          <h2>Lisää uuden lähdeviitteen tiedot</h2>
          <form onsubmit="fetchAcm(); return false;">
