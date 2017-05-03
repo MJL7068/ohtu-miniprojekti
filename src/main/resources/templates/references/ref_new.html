@@ -11,6 +11,12 @@
         <div th:replace="fragments/navigation_fragment"></div>
         <div>
          <h2>Lisää uuden lähdeviitteen tiedot</h2>
+         <form onsubmit="fetchAcm(); return false;">
+             <label>Hae tiedot ACM:stä</label>
+             <input id="acm-input" type="text" />
+             <button>Hae</button>
+         </form>
+         <span id="acm-status" />
         <form th:action="@{/references/ref_new}" method="POST">
 
             <select id="entrytype-dropdown" name="entrytype" onchange="updateFields()">
@@ -38,6 +44,8 @@
         </form>
         </div>
         <script type="text/javascript" th:src="@{/js/entrytype.js}"></script>
+        <script type="text/javascript" th:src="@{/js/bibtex.min.js}"></script>
+        <script type="text/javascript" th:src="@{/js/acm.js}"></script>
     </body>
 
 </html>
