@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package miniproju.controllers;
 
 import java.util.Map;
@@ -13,34 +8,17 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import miniproju.services.ReferenceService;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
-import org.springframework.data.web.PageableDefault;
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
 import static org.springframework.web.bind.annotation.RequestMethod.POST;
 import org.springframework.web.bind.annotation.RequestParam;
 
-/**
- *
- * @author ilkka
- */
+
 @Controller
 public class RefController {
 
     @Autowired
     private ReferenceService referenceService;
 
-    /*  RequestMapping
-        - map all HTTP verbs to /greeting to this method
-        - narrow down ala @RequestMapping(method=GET)                 
-    
-        Requestparam
-        - bind query parameter 'name' to method parameter 'name'
-    
-        PathVariable
-        - bind pathvariable to method parameter 'id'
-     */
     @RequestMapping("/references/view/{id}")
     public String view(@PathVariable("id") Long id, Model model) {
         Reference ref = referenceService.findWithId(id);

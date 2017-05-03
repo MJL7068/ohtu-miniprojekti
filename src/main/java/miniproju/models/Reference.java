@@ -1,7 +1,6 @@
 package miniproju.models;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -16,9 +15,6 @@ import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 import miniproju.utilities.BibtexGenerator;
 
-/**
- * @author ilkka
- */
 @Entity
 public class Reference extends AbstractPersistable<Long> {
 
@@ -108,14 +104,14 @@ public class Reference extends AbstractPersistable<Long> {
 
     public List<String> getAuthorSurnames() {
         List<String> surnames = new ArrayList<>();
-        
+
         if (author != null) {
-        surnames = Pattern.compile(" and ")
-                .splitAsStream(author)
-                .map(authors -> authors.split(",")[0].trim())
-                .collect(Collectors.toList());
+            surnames = Pattern.compile(" and ")
+                    .splitAsStream(author)
+                    .map(authors -> authors.split(",")[0].trim())
+                    .collect(Collectors.toList());
         }
-        
+
         return surnames;
     }
 

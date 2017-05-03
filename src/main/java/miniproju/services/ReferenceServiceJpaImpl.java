@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package miniproju.services;
 
 import java.util.List;
@@ -13,18 +8,11 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-/**
- *
- * @author ilkka
- */
 @Service
 public class ReferenceServiceJpaImpl implements ReferenceService {
 
     @Autowired
     private ReferenceRepository referenceRepository;
-    
-//    @Autowired
-//    private ReferenceKeyGeneratorService keyGenerator;
 
     @Override
     public List<Reference> findAll() {
@@ -43,7 +31,6 @@ public class ReferenceServiceJpaImpl implements ReferenceService {
 
     @Override
     public Reference create(Reference ref) {
-        //keyGenerator.autoUniqueEntryKey(ref, referenceRepository);
         autoUniqueEntryKey(ref);
         return this.referenceRepository.save(ref);
     }
@@ -64,6 +51,16 @@ public class ReferenceServiceJpaImpl implements ReferenceService {
         return sb.toString();
     }
 
+    @Override
+    public Page<Reference> findWithPage(Pageable pageable) {
+        return referenceRepository.findAll(pageable);
+    }
+
+    /**
+     * Ensure unique entry keys in db
+     *
+     * @param ref
+     */
     private void autoUniqueEntryKey(Reference ref) {
         String entryKey = ref.getEntryKey();
 
@@ -99,11 +96,6 @@ public class ReferenceServiceJpaImpl implements ReferenceService {
         }
 
         return entryKey + "-" + uniqueNumber;
-    }
-
-    @Override
-    public Page<Reference> findWithPage(Pageable pageable) {
-        return referenceRepository.findAll(pageable);
     }
 
 }

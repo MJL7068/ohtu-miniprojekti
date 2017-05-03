@@ -2,10 +2,6 @@ package miniproju.utilities;
 
 import java.util.Map;
 
-/**
- *
- * @author ilkka
- */
 public class BibtexGenerator {
 
     private static final String[][] replacements;
@@ -13,12 +9,12 @@ public class BibtexGenerator {
     // Map character replacements
     static {
         replacements = new String[6][];
-        replacements[0] = new String[] {"ä", "\\\"{a}"};
-        replacements[1] = new String[] {"Ä", "\\\"{A}"};
-        replacements[2] = new String[] {"ö", "\\\"{o}"};
-        replacements[3] = new String[] {"Ö", "\\\"{O}"};
-        replacements[4] = new String[] {"å", "\\aa"};
-        replacements[5] = new String[] {"Å", "\\AA"};
+        replacements[0] = new String[]{"ä", "\\\"{a}"};
+        replacements[1] = new String[]{"Ä", "\\\"{A}"};
+        replacements[2] = new String[]{"ö", "\\\"{o}"};
+        replacements[3] = new String[]{"Ö", "\\\"{O}"};
+        replacements[4] = new String[]{"å", "\\aa"};
+        replacements[5] = new String[]{"Å", "\\AA"};
     }
 
     private BibtexGenerator() {

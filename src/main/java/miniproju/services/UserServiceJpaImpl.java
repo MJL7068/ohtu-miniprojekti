@@ -7,16 +7,12 @@ import miniproju.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-/**
- *
- * @author ilkka
- */
 @Service
 public class UserServiceJpaImpl implements UserService {
 
     @Autowired
     private UserRepository userRepo;
-    
+
     @Override
     public List<Owner> findAll() {
         return this.userRepo.findAll();
@@ -31,5 +27,5 @@ public class UserServiceJpaImpl implements UserService {
     public Owner create(Owner owner) {
         return this.userRepo.save(owner);
     }
-    
+
 }
