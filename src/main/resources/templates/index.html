@@ -15,10 +15,13 @@
 
             <ul class="allReferences">
                 <li th:each="ref : ${allRefs}">
+                
+                     <div class="ref">
                     <h3>
                         <span th:text="${ref.entryKey}" />
                         (<span class="ref-type" th:text="${ref.entryType}" />)
                     </h3>
+                   
                     <ul th:each="field : ${ref.fields().entrySet()}">
                         <li th:text="${field.getKey()} + ': ' + ${field.getValue()}"></li>
                     </ul>
@@ -28,9 +31,12 @@
                     <form th:action="@{/references/edit/{id}(id=${ref.id})}" method="GET">
                         <input type="submit" value="Muokkaa"/>            
                     </form>
+                    </div>
+               
                 </li>
             </ul>
-        </div>
+            </div>
+            
 
 
         <div class="pagination" th:if="${onlyOne} == false">
