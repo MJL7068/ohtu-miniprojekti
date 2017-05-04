@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletResponse;
+import miniproju.utilities.BibtexGenerator;
 
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
 
@@ -23,7 +24,7 @@ public class AcmController {
         try {
             String bibtex = fetchContent(id);
             if (!bibtex.isEmpty()) {
-                return bibtex;
+                return BibtexGenerator.fromBibtex(bibtex);
             }
             res.setStatus(404);
         } catch (Exception e) {
