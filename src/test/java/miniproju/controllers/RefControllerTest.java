@@ -1,7 +1,5 @@
 package miniproju.controllers;
 
-
-
 import miniproju.models.Reference;
 import miniproju.services.ReferenceServiceJpaImpl;
 import static org.hamcrest.Matchers.hasProperty;
@@ -26,10 +24,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
-/**
- *
- * @author ilkka
- */
 public class RefControllerTest {
 
     private MockMvc mockMvc;
@@ -71,7 +65,7 @@ public class RefControllerTest {
                 .andExpect(status().isOk())
                 .andExpect(view().name("references/ref_new"));
     }
-    
+
     @Test
     public void editRefIsRendered() throws Exception {
         mockMvc.perform(get("/references/edit/{id}", 1L))
@@ -85,40 +79,40 @@ public class RefControllerTest {
                 .param("title", "testTitle")
                 .param("year", "1")
                 .accept(MediaType.ALL);
-        
+
         mockMvc.perform(req)
                 .andExpect(status().is3xxRedirection())
                 .andExpect(view().name("redirect:/"));
-        
+
         verify(refService, times(1)).create(any());
         verifyNoMoreInteractions(refService);
     }
-    
+
     @Test
-    public void succesfulPostToEditRefUpdatesReferenceAndRenders() throws Exception {        
+    public void succesfulPostToEditRefUpdatesReferenceAndRenders() throws Exception {
         RequestBuilder req = post("/references/{id}/edit", 1L)
                 .param("title", "testTitle")
                 .param("year", "1")
                 .accept(MediaType.ALL);
-        
+
         mockMvc.perform(req)
                 .andExpect(status().is3xxRedirection())
                 .andExpect(view().name("redirect:/"));
-        
+
         verify(refService, times(1)).findWithId(any());
         verify(refService, times(1)).update(any());
         verifyNoMoreInteractions(refService);
     }
-    
+
     @Test
-    public void succesfulPostToRemoveRefUpdatesReferenceAndRenders() throws Exception {        
+    public void succesfulPostToRemoveRefUpdatesReferenceAndRenders() throws Exception {
         RequestBuilder req = post("/references/{id}/remove", 1L)
                 .accept(MediaType.ALL);
-        
+
         mockMvc.perform(req)
                 .andExpect(status().is3xxRedirection())
                 .andExpect(view().name("redirect:/"));
-        
+
         verify(refService, times(0)).findWithId(any());
         verify(refService, times(0)).update(any());
     }

@@ -16,14 +16,14 @@ import static org.springframework.web.bind.annotation.RequestMethod.GET;
 public class IndexController {
 
     @Autowired
-    private ReferenceService refService;
+    private ReferenceService referenceService;
 
     @RequestMapping(value = "/", method = GET)
     public String listRef(@PageableDefault(size = 5,
             direction = Sort.Direction.ASC,
             sort = "entryKey") Pageable pageable, Model model) {
 
-        Page<Reference> refs = refService.findWithPage(pageable);
+        Page<Reference> refs = referenceService.findWithPage(pageable);
         model.addAttribute("allRefs", refs);
         model.addAttribute("current", refs.getNumber());
         model.addAttribute("end", refs.getTotalPages());
