@@ -10,22 +10,27 @@
 
     <body> 
         <div th:replace="fragments/navigation_fragment"></div>
-        <h1>Lähdeviitteet</h1>
-        <h3>
-            <span th:text="${ref.entryKey}" />
-            (<span class="ref-type" th:text="${ref.entryType}" />)
-        </h3>
+        <h1>Muokkaus</h1>
 
-        <form th:action="@{/references/{id}/edit(id=${ref.id})}" method="POST">
-            <ul th:each="field : ${ref.fields().entrySet()}">
-                <label th:text="${field.getKey()}"></label>
-                <input class="form-control" th:id="${field.getKey()}" th:name="${field.getKey()}" th:value="${field.getValue()}" />
-            </ul>
+        <div class="allReferences">
+            <h3>
+                <span th:text="${ref.entryKey}" />
+                (<span class="ref-type" th:text="${ref.entryType}" />)
+            </h3>
 
-            <input type="submit" value="Muokkaa"/>            
-        </form>
-        
-        <a href="/">Takaisin</a>
+            <form th:action="@{/references/{id}/edit(id=${ref.id})}" method="POST">
+                <ul th:each="field : ${ref.fields().entrySet()}">
+                    <label th:text="${field.getKey()}"></label>
+                    <input class="form-control" th:id="${field.getKey()}" th:name="${field.getKey()}" th:value="${field.getValue()}" />
+                </ul>
+                
+                <button type="submit">Tallenna</button>
+
+                <!--<input type="submit" value="Tallenna"/>-->            
+            </form>
+
+            <p><a href="/">Takaisin</a></p>
+        </div>
     </body>
 
 </html>
