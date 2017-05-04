@@ -19,7 +19,7 @@ public class IndexController {
     private ReferenceService referenceService;
 
     @RequestMapping(value = "/", method = GET)
-    public String listRef(@PageableDefault(size = 5,
+    public String listRef(@PageableDefault(size = 15,
             direction = Sort.Direction.ASC,
             sort = "entryKey") Pageable pageable, Model model) {
 
