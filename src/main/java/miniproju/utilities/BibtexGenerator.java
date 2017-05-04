@@ -40,6 +40,10 @@ public class BibtexGenerator {
         return sb.toString();
     }
 
+    public static String fromBibtex(String bibtexString) {
+        return refillScandics(bibtexString);
+    }
+
     private static String preserveCapitals(String s) {
         return s.replaceAll("([A-Z])", "{$1}");
     }
@@ -47,6 +51,13 @@ public class BibtexGenerator {
     private static String replaceScandics(String s) {
         for (String[] rep : replacements) {
             s = s.replace(rep[0], rep[1]);
+        }
+        return s;
+    }
+
+    private static String refillScandics(String s) {
+        for (String[] rep : replacements) {
+            s = s.replace(rep[1], rep[0]);
         }
         return s;
     }
