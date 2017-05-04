@@ -11,6 +11,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.HashMap;
 
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 @RunWith(SpringRunner.class)
@@ -38,6 +39,22 @@ public class BibtexControllerTest {
         r.setEntryKey("IAM2015");
         refService.create(r);
         assertTrue(fileContents().contains("@inproceedings{IAM2015"));
+    }
+
+    @Test
+    public void bibtexNordicLettersNotUsed() {
+        Reference r = new Reference();
+        r.setSchool("ö");
+        refService.create(r);
+        assertFalse(fileContents().contains("\\\"o"));
+    }
+
+    @Test
+    public void bibtexNordicLettersEscaped() {
+        Reference r = new Reference();
+        r.setSeries("å");
+        refService.create(r);
+        assertTrue(fileContents().contains(""));
     }
 
     private String fileContents() {
